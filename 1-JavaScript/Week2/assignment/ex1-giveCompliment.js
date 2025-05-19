@@ -1,5 +1,5 @@
 export function giveCompliment(name) {
-  const complimentArr = [
+  const compliments = [
     'Charming',
     'Magnanimous',
     'Gorgeous',
@@ -11,7 +11,7 @@ export function giveCompliment(name) {
     'Compassionate',
     'Urbane',
   ];
-  return `You are ${complimentArr[Math.floor(10 * Math.random())]}, ${name}!`;
+  return `You are ${compliments[Math.floor(10 * Math.random())]}, ${name}!`;
 }
 
 function main() {

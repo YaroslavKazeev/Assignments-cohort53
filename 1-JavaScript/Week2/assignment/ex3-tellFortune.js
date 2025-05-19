@@ -8,9 +8,7 @@ export function tellFortune(numKids, partnerNames, locations, jobTitles) {
 
 function main() {
   // Array of random numbers representing the number of kids (0-5)
-  const numKids = Array.from({ length: 5 }, () =>
-    Math.floor(Math.random() * 10)
-  );
+  const numKids = [0, 1, 2, 4, 7];
 
   // Array of random partner names
   const partnerNames = ['Alice', 'Bob', 'Charlie', 'Diana', 'Ethan'];
