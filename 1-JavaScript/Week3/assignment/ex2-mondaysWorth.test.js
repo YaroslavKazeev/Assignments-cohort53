@@ -21,11 +21,10 @@ const hourlyRate = 25;
 
 function computeEarnings(mondayTasks, hourlyRate) {
   return `€${mondayTasks
-    .map((item) => (item['duration'] / 60) * hourlyRate)
-    .reduce((acc, elem) => acc + elem)
+    .reduce((acc, item) => acc + (item['duration'] / 60) * hourlyRate, 0)
     .toFixed(2)}`;
 }
-
+console.log(computeEarnings(mondayTasks, hourlyRate));
 // ! Unit tests (using Jest)
 describe('js-wk3-mondaysWorth', () => {
   test('computeEarnings should take two parameters', () => {
