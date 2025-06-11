@@ -7,5 +7,17 @@ Full description at: https://github.com/HackYourFuture/Assignments/tree/main/2-B
    `list-item`.
 3. Look in the css file!
 ------------------------------------------------------------------------------*/
+const people = { nickname: 'Yar', 'fav-food': 'Fish', hometown: 'Moscow' };
 
-// TODO add your JavaScript code here.
+function main(people) {
+  const ul = document.getElementsByTagName('ul')[0];
+  const li_s = ul.children;
+
+  for (let i = 0; i < li_s.length; i++) {
+    let span = li_s[i].getElementsByTagName('span');
+    span[0].textContent = people[span[0].id];
+    li_s[i].className = 'list-item';
+  }
+}
+
+main(people);
