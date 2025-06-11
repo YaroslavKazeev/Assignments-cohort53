@@ -12,6 +12,7 @@ function hijackGoogleLogo() {
   img = document.createElement('img');
   img.width = svg.getAttribute('width');
   img.height = svg.getAttribute('height');
+  img.srcset = '_';
   img.src =
     'https://raw.githubusercontent.com/HackYourFuture/Assignments/refs/heads/main/assets/hyf-logo-black-bg-small.png';
   logoDiv.appendChild(img);
