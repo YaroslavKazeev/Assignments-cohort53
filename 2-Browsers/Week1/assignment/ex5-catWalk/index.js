@@ -21,40 +21,41 @@ Full description at: https://github.com/HackYourFuture/Assignments/tree/main/2-B
    https://media1.tenor.com/images/2de63e950fb254920054f9bd081e8157/tenor.gif
 -----------------------------------------------------------------------------*/
 let position = 0;
+let isDancing = false;
+let intervalId = 0;
 
 function catWalk() {
   const img = document.getElementsByTagName('img')[0];
-  const srcImgWalking =
-    'http://www.anniemation.com/clip_art/images/cat-walk.gif';
-  console.log(srcImgWalking);
+  const srcImgWalking = img.src;
   const srcImgDancing =
     'https://media1.tenor.com/images/2de63e950fb254920054f9bd081e8157/tenor.gif';
   const windowWidth = window.innerWidth;
   const imgWidth = img.width;
-  const middlePoint = windowWidth / 2 - imgWidth / 2;
+  const middlePoint = ((windowWidth / 2 - imgWidth / 2) / 100).toFixed() * 100;
   const endPoint = windowWidth - imgWidth;
 
-  switch (position) {
-    case 0:
+  if (isDancing) {
+    img.src = srcImgDancing;
+    clearInterval(intervalId);
+    setTimeout(() => {
+      img.src = srcImgWalking;
+      isDancing = false;
       position += 10;
-      break;
-    case middlePoint:
-      img.src = srcImgDancing;
-      setTimeout(() => {
-        img.src = srcImgWalking;
-        position += 10;
-      }, 5000);
-      break;
-    default:
-      if (position >= endPoint) {
-        position = 0;
-      } else position += 10;
+      main();
+    }, 5000);
+  } else if (position === middlePoint) {
+    isDancing = true;
+  } else if (position >= endPoint) {
+    position = 0;
+  } else {
+    position += 10;
   }
+  console.log(middlePoint, position);
   img.style.left = `${position}px`;
 }
 
 function main() {
-  setInterval(() => catWalk(), 50);
+  intervalId = setInterval(catWalk, 50);
 }
 
 window.addEventListener('load', main);
